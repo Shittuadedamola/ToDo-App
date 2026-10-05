@@ -1,4 +1,5 @@
 const main = document.querySelector("main");
+const todoInput = document.getElementById("todoInput");
 
 const todoSection = () => {
     var allTodos = document.createElement("section");
@@ -52,7 +53,7 @@ const addTodo = () => {
     )
 
     var task = document.createElement("span");
-    task.textContent = "Hi"
+    task.textContent = todoInput.value
     eachTodo.appendChild(task);
     task.id = "task";
     task.classList.add(
@@ -70,4 +71,9 @@ const addTodo = () => {
     )
 }
 
-addTodo();
+// addTodo();
+document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter" && todoInput.value != " ") {
+                addTodo();
+            }
+        });
