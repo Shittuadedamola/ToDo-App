@@ -47,15 +47,31 @@ const addTodo = () => {
         "rounded-full",
         "border-gray-300",
         "border-2",
-        "mr-3"
+        "mr-3",
+        "hover:border-blue-500",
+        "hover:cursor-pointer",
+        "flex",
+        "items-center",
+        "justify-center"
     )
+
+    var checkIcon = document.createElement("img");
+    checkIcon.setAttribute("src", "images/icon-check.svg");
+    checkbox.appendChild(checkIcon);
+    checkIcon.classList.add(
+        "h-[15px]",
+        "w-[15px]",
+        "hidden"
+    )
+
 
     var task = document.createElement("span");
     task.textContent = todoInput.value
     eachTodo.appendChild(task);
     task.id = "task";
     task.classList.add(
-        "text-gray-700"
+        "text-gray-700",
+        "hover:cursor-pointer"
     )
 
     var cancelBtn = document.createElement("img");
@@ -65,11 +81,13 @@ const addTodo = () => {
     cancelBtn.classList.add(
         "h-[15px]",
         "w-[15px]",
-        "ml-auto"
+        "ml-auto",
+        "hover:cursor-pointer"
     )
 
     checkbox.onclick = function(){
         task.classList.toggle("line-through")
+        // checkbox.classList.toggle("border-blue-500")
         if (task.classList.contains("text-gray-700")) {
             task.classList.remove("text-gray-700");
             task.classList.add("text-gray-300");
@@ -77,6 +95,19 @@ const addTodo = () => {
             task.classList.remove("text-gray-300");
             task.classList.add("text-gray-700");
         }
+
+        checkbox.classList.toggle("bg-blue-500")
+        if (checkbox.classList.contains("border-gray-300")){
+            checkbox.classList.remove("border-gray-300");
+            checkbox.classList.add("border-blue-500");
+        } else {
+            checkbox.classList.remove("border-blue-500");
+            checkbox.classList.add("border-gray-300")
+        }
+
+        checkIcon.classList.toggle("hidden")
+
+        console.log(checkIcon.classList)
     }
 
     cancelBtn.onclick = function(){
