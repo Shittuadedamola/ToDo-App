@@ -22,7 +22,7 @@ const allTodosContainer = document.getElementById("allTodosContainer");
 
 const addTodo = () => {
     var eachTodo = document.createElement("div");
-    allTodosContainer.appendChild(eachTodo);
+    allTodosContainer.prepend(eachTodo);
     eachTodo.id = "todo";
 
     eachTodo.classList.add(
