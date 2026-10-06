@@ -1,7 +1,10 @@
 const main = document.querySelector("main");
 const todoInput = document.getElementById("todoInput");
 const allTodosContainer = document.getElementById("allTodosContainer");
-const itemsCount = document.getElementById("itemsCount")
+const itemsCount = document.getElementById("itemsCount");
+const lightDark = document.getElementById("lightDark");
+const dark = document.getElementById("dark");
+const light = document.getElementById("light")
 
 // const todoSection = () => {
 //     var allTodos = document.createElement("section");
@@ -36,6 +39,9 @@ const addTodo = () => {
         "items-center",
         "px-5",
         "py-4",
+        "dark:bg-gray-900",
+        "dark:text-white",
+        "dark:border-gray-700"
     );
 
     var checkbox = document.createElement("div");
@@ -53,7 +59,8 @@ const addTodo = () => {
         "hover:cursor-pointer",
         "flex",
         "items-center",
-        "justify-center"
+        "justify-center",
+        "dark:border-gray-700"
     )
 
     var checkIcon = document.createElement("img");
@@ -72,7 +79,8 @@ const addTodo = () => {
     task.id = "task";
     task.classList.add(
         "text-gray-700",
-        "hover:cursor-pointer"
+        "hover:cursor-pointer",
+        "dark:text-white"
     )
 
     var cancelBtn = document.createElement("img");
@@ -180,4 +188,8 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-// itemsCount.textContent = allTodosContainer.children.length
+const triggerLightDark = () => {
+    dark.classList.toggle("hidden");
+    light.classList.toggle("hidden")
+    document.documentElement.classList.toggle("dark");
+}

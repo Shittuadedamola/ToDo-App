@@ -5,38 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>ToDo-App</title>
+    <style type="text/tailwindcss">
+        @custom-variant dark (&:where(.dark, .dark *));
+    </style>
 </head>
-<body>
-    <main class="bg-[url(/images/bg-mobile-light.jpg)] bg-cover bg-no-repeat bg-center w-[100vw] h-[27vh] ">
-        <nav class="flex items-center justify-between py-12 px-7">
-            <h1 class="font-bold text-white text-3xl">T O D O</h1>
-            <img src="images/icon-moon.svg" alt="" class="h-[25px] w-[25px]">
-        </nav>
-        <div class="flex bg-white mx-7 mb-7 px-5 py-4 rounded-sm items-center">
-            <div class="w-[25px] h-[25px] border rounded-full border-gray-300 border-2 mr-3"></div>
-            <input type="text" placeholder="Create a new todo..." 
-            class="text-gray-700 outline-none w-full caret-blue-500" id="todoInput">
-        </div>
-
-        <section class="mx-7 mb-7 rounded-md bg-white shadow-2xl">
-            <div id="allTodosContainer">
-
+<body class="dark:bg-black">
+    <main class="bg-[url(/images/bg-mobile-light.jpg)] dark:bg-[url(/images/bg-mobile-dark.jpg)] bg-cover bg-no-repeat bg-center w-[100vw] h-[27vh] sm:flex sm:flex-col sm:items-center">
+        <div class="sm:w-[80vw] md:w-[60vw] lg:w-[50vw]">
+            <nav class="flex items-center justify-between py-12 px-7">
+                <h1 class="font-bold text-white text-3xl">T O D O</h1>
+                <div id="lightDark" onclick="triggerLightDark()">
+                    <img id="dark" src="images/icon-moon.svg" alt="" class="h-[25px] w-[25px]">
+                    <img id="light" src="images/icon-sun.svg" alt="" class="h-[25px] w-[25px] hidden">
+                </div>
+            </nav>
+            <div class="flex bg-white dark:bg-gray-900 mx-7 mb-7 px-5 py-4 rounded-sm items-center shadow-2xl">
+                <div class="w-[25px] h-[25px] border rounded-full border-gray-300 dark:border-gray-700 border-2 mr-3"></div>
+                <input type="text" placeholder="Create a new todo..." 
+                class="text-gray-700 dark:text-gray-200 outline-none w-full caret-blue-500" id="todoInput">
             </div>
-            <div id="totalItems" class="flex justify-between items-center px-5 py-4 text-gray-400">
-                <span><span id="itemsCount">0</span> items left</span>
-                <span id="clearCompleted" class="hover:text-gray-700 hover:cursor-pointer">Clear Completed</span>
+
+            <section class="mx-7 mb-7 rounded-md bg-white shadow-2xl dark:bg-gray-900">
+                <div id="allTodosContainer">
+
+                </div>
+                <div id="totalItems" class="flex justify-between items-center px-5 py-4 text-gray-400 dark:text-gray-600">
+                    <span><span id="itemsCount">0</span> items left</span>
+                    <div class="hidden lg:flex">
+                        <div class="flex justify-between items-center gap-5 text-gray-400 dark:bg-gray-900">
+                            <span class="text-blue-500 hover:text-gray-700 hover:cursor-pointer dark:hover:text-white">All</span>
+                            <span class="hover:text-gray-700 hover:cursor-pointer dark:text-gray-600 dark:hover:text-white">Active</span>
+                            <span class="hover:text-gray-700 hover:cursor-pointer dark:text-gray-600 dark:hover:text-white">Completed</span>
+                        </div>
+                    </div>
+                    <span id="clearCompleted" class="hover:text-gray-700 dark:hover:text-white hover:cursor-pointer">Clear Completed</span>
+                </div>
+            </section>
+
+            <div class=" mx-7 rounded-md bg-white shadow-2xl flex lg:hidden justify-between items-center px-20 py-4 text-gray-400 text-lg font-bold dark:bg-gray-900">
+                <span class="text-blue-500 hover:text-gray-700 hover:cursor-pointer dark:hover:text-white">All</span>
+                <span class="hover:text-gray-700 hover:cursor-pointer dark:text-gray-600 dark:hover:text-white">Active</span>
+                <span class="hover:text-gray-700 hover:cursor-pointer dark:text-gray-600 dark:hover:text-white">Completed</span>
             </div>
-        </section>
 
-        <div class="mx-7 mb-15 rounded-md bg-white shadow-2xl flex justify-between items-center px-20 py-4 text-gray-400 text-lg font-bold">
-            <span class="text-blue-500 hover:text-gray-700 hover:cursor-pointer">All</span>
-            <span class="hover:text-gray-700 hover:cursor-pointer">Active</span>
-            <span class="hover:text-gray-700 hover:cursor-pointer">Completed</span>
+            <footer class="flex justify-center text-gray-400 dar:text-gray-600 mt-15">
+                Drag and drop to reorder list
+            </footer>
         </div>
-
-        <footer class="flex justify-center text-gray-400">
-            Drag and drop to reorder list
-        </footer>
     </main>
 
     <script src="script.js"></script>
