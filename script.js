@@ -1,6 +1,7 @@
 const main = document.querySelector("main");
 const todoInput = document.getElementById("todoInput");
 const allTodosContainer = document.getElementById("allTodosContainer");
+const itemsCount = document.getElementById("itemsCount")
 
 // const todoSection = () => {
 //     var allTodos = document.createElement("section");
@@ -91,9 +92,11 @@ const addTodo = () => {
         if (task.classList.contains("text-gray-700")) {
             task.classList.remove("text-gray-700");
             task.classList.add("text-gray-300");
+            // itemsCount.textContent = (allTodosContainer.children.length -= 1)
         } else {
             task.classList.remove("text-gray-300");
             task.classList.add("text-gray-700");
+            // itemsCount.textContent = (allTodosContainer.children.length += 1)
         }
 
         checkbox.classList.toggle("bg-blue-500")
@@ -107,11 +110,18 @@ const addTodo = () => {
 
         checkIcon.classList.toggle("hidden")
 
-        console.log(checkIcon.classList)
+        if (checkIcon.classList.contains("hidden")){
+            itemsCount.textContent = Number(itemsCount.textContent) + 1
+        } else {
+            itemsCount.textContent = Number(itemsCount.textContent) - 1
+        }
     }
 
     cancelBtn.onclick = function(){
         eachTodo.remove();
+        if (!task.classList.contains("line-through")){
+            itemsCount.textContent = Number(itemsCount.textContent) - 1
+        }
     }
 }
 
@@ -166,5 +176,8 @@ document.addEventListener("keydown", function(event) {
     if (event.key === "Enter" && todoInput.value.trim() !== "") {
         addTodo();
         todoInput.value = ""
+        itemsCount.textContent = Number(itemsCount.textContent) + 1
     }
 });
+
+// itemsCount.textContent = allTodosContainer.children.length
