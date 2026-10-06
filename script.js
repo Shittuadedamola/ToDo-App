@@ -8,7 +8,7 @@ const todoSection = () => {
     const allTodosContainer = document.getElementById("allTodosContainer");
 
     allTodos.classList.add(
-        "h-[300px]",
+        // "h-[300px]",
         "mx-7",
         "rounded-md",
         "bg-white",
@@ -26,11 +26,7 @@ const addTodo = () => {
     eachTodo.classList.add(
         "border-b",
         "border-gray-300",
-        // "h-[60px]",
-        // "mx-7",
-        // "rounded-md",
         "bg-white",
-        // "shadow-lg"
         "mb-2",
         "rounded-t-md",
         "flex",
@@ -69,11 +65,15 @@ const addTodo = () => {
         "w-[15px]",
         "ml-auto"
     )
+
+    cancelBtn.onclick = function(){
+        eachTodo.remove();
+    }
 }
 
-// addTodo();
 document.addEventListener("keydown", function(event) {
-            if (event.key === "Enter" && todoInput.value != " ") {
-                addTodo();
-            }
-        });
+    if (event.key === "Enter" && todoInput.value.trim() !== "") {
+        addTodo();
+        todoInput.value = ""
+    }
+});
