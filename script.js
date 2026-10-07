@@ -7,24 +7,6 @@ const lightDark = document.getElementById("lightDark");
 const dark = document.getElementById("dark");
 const light = document.getElementById("light")
 
-// const todoSection = () => {
-//     var allTodos = document.createElement("section");
-//     main.appendChild(allTodos);
-//     allTodos.id = "allTodosContainer";
-//     const allTodosContainer = document.getElementById("allTodosContainer");
-
-//     allTodos.classList.add(
-//         // "h-[300px]",
-//         "mx-7",
-//         "rounded-md",
-//         "bg-white",
-//         "shadow-lg",
-//         // "relative",
-//     );
-// }
-
-// todoSection();
-
 const addTodo = (todo) => {
     var eachTodo = document.createElement("div");
     allTodosContainer.prepend(eachTodo);
@@ -97,15 +79,12 @@ const addTodo = (todo) => {
 
     checkbox.onclick = function(){
         task.classList.toggle("line-through")
-        // checkbox.classList.toggle("border-blue-500")
         if (task.classList.contains("text-gray-700")) {
             task.classList.remove("text-gray-700");
             task.classList.add("text-gray-300");
-            // itemsCount.textContent = (allTodosContainer.children.length -= 1)
         } else {
             task.classList.remove("text-gray-300");
             task.classList.add("text-gray-700");
-            // itemsCount.textContent = (allTodosContainer.children.length += 1)
         }
 
         checkbox.classList.toggle("bg-blue-500")
