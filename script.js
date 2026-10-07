@@ -1,3 +1,4 @@
+const body = document.querySelector("body");
 const main = document.querySelector("main");
 const todoInput = document.getElementById("todoInput");
 const allTodosContainer = document.getElementById("allTodosContainer");
