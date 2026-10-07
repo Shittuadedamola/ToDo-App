@@ -7,6 +7,8 @@ const lightDark = document.getElementById("lightDark");
 const dark = document.getElementById("dark");
 const light = document.getElementById("light")
 
+let todos = [];
+
 // const todoSection = () => {
 //     var allTodos = document.createElement("section");
 //     main.appendChild(allTodos);
@@ -132,6 +134,18 @@ const addTodo = () => {
             itemsCount.textContent = Number(itemsCount.textContent) - 1
         }
     }
+///local storage
+    const todoText = todoInput.value.trim();
+    if (todoText === "") {
+        return;
+    }
+
+    todos.push(todoText);
+
+    // todoInput.value = "";
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+
 }
 
 // const totalItemsDiv = () => {
@@ -184,7 +198,7 @@ const addTodo = () => {
 document.addEventListener("keydown", function(event) {
     if (event.key === "Enter" && todoInput.value.trim() !== "") {
         addTodo();
-        todoInput.value = ""
+        todoInput.value = "";
         itemsCount.textContent = Number(itemsCount.textContent) + 1
     }
 });
@@ -194,3 +208,5 @@ const triggerLightDark = () => {
     light.classList.toggle("hidden")
     document.documentElement.classList.toggle("dark");
 }
+
+// localStorage.clear()
