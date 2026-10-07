@@ -7,8 +7,6 @@ const lightDark = document.getElementById("lightDark");
 const dark = document.getElementById("dark");
 const light = document.getElementById("light")
 
-let todos = [];
-
 // const todoSection = () => {
 //     var allTodos = document.createElement("section");
 //     main.appendChild(allTodos);
@@ -27,7 +25,7 @@ let todos = [];
 
 // todoSection();
 
-const addTodo = () => {
+const addTodo = (todo) => {
     var eachTodo = document.createElement("div");
     allTodosContainer.prepend(eachTodo);
     eachTodo.id = "todo";
@@ -77,7 +75,7 @@ const addTodo = () => {
 
 
     var task = document.createElement("span");
-    task.textContent = todoInput.value
+    task.textContent = todo;
     eachTodo.appendChild(task);
     task.id = "task";
     task.classList.add(
@@ -130,22 +128,17 @@ const addTodo = () => {
 
     cancelBtn.onclick = function(){
         eachTodo.remove();
+
+        todos = todos.filter(function(todoItem) {
+            return todoItem !== task.textContent;
+        });
+
+        localStorage.setItem("todos", JSON.stringify(todos));
+
         if (!task.classList.contains("line-through")){
-            itemsCount.textContent = Number(itemsCount.textContent) - 1
+            itemsCount.textContent = Number(itemsCount.textContent) - 1;
         }
     }
-///local storage
-    const todoText = todoInput.value.trim();
-    if (todoText === "") {
-        return;
-    }
-
-    todos.push(todoText);
-
-    // todoInput.value = "";
-    localStorage.setItem("todos", JSON.stringify(todos));
-
-
 }
 
 // const totalItemsDiv = () => {
@@ -197,8 +190,7 @@ const addTodo = () => {
 
 document.addEventListener("keydown", function(event) {
     if (event.key === "Enter" && todoInput.value.trim() !== "") {
-        addTodo();
-        todoInput.value = "";
+        createTodo();
         itemsCount.textContent = Number(itemsCount.textContent) + 1
     }
 });
@@ -209,4 +201,28 @@ const triggerLightDark = () => {
     document.documentElement.classList.toggle("dark");
 }
 
-// localStorage.clear()
+let todos = [];
+const savedTodos = localStorage.getItem("todos");
+
+if (savedTodos) {
+    todos = JSON.parse(savedTodos);
+    todos.forEach(function(todo){
+        addTodo(todo)
+    })
+}
+
+const createTodo = () => {
+    const todoText = todoInput.value.trim();
+
+    if (todoText === "") {
+        return;
+    }
+
+    todos.push(todoText);
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+    addTodo(todoText);
+
+    todoInput.value = "";
+};
