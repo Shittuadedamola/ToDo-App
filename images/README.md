@@ -43,3 +43,21 @@ Implementing dark mode.
 Understanding browser localStorage and JSON data conversion.
 
 Managing application state and updating the user interface.
+
+FUTURE IMPROVEMENTS
+
+Add filtering for all, active, and completed tasks.
+
+Implement a clear-completed-tasks feature.
+
+Improve accessibility and keyboard navigation.
+
+Refine task persistence and completion-state handling.
+
+AUTHOR
+
+Adedamola Shittu
+
+GitHub: @Shittuadedamola
+
+If you find this project useful or have suggestions for improvement, feel free to explore the repository and share your feedback.
