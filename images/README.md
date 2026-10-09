@@ -15,3 +15,13 @@ Dark Mode: Switch between light and dark themes.
 Persistent Storage: Uses the browser's localStorage to save tasks and retain them after refreshing the page.
 
 Responsive Design: Designed to provide a clean experience across different screen sizes.
+
+TECHNOLOGIES USED
+
+HTML5
+
+Tailwind CSS
+
+JavaScript (DOM Manipulation)
+
+Browser Local Storage
