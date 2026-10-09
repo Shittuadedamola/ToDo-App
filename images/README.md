@@ -25,3 +25,21 @@ Tailwind CSS
 JavaScript (DOM Manipulation)
 
 Browser Local Storage
+
+WHAT I LEARNED
+
+While building this project, I practised:
+
+Selecting and manipulating DOM elements with JavaScript.
+
+Creating HTML elements dynamically.
+
+Handling user interactions and keyboard events.
+
+Using CSS utility classes with Tailwind CSS.
+
+Implementing dark mode.
+
+Understanding browser localStorage and JSON data conversion.
+
+Managing application state and updating the user interface.
